@@ -21,10 +21,11 @@ const config: HardhatUserConfig = {
     },
   },
   etherscan: {
-    // Your API key for Etherscan
-    // Obtain one at https://etherscan.io/
-    // apiKey: ETHERSCAN_API,
+    apiKey: {
+      avalancheFujiTestnet: process.env.ETHERSCAN_API_KEY!,
+    },
   },
+
   sourcify: {
     // Disabled by default
     // Doesn't need an API key
