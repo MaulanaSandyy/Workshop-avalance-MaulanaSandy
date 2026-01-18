@@ -5,6 +5,16 @@ import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
 
+  // ==============================
+  // ENABLE CORS (WAJIB)
+  // ==============================
+  app.enableCors({
+    origin: true, // allow all origins (OK untuk development)
+  });
+
+  // ==============================
+  // SWAGGER CONFIG
+  // ==============================
   const config = new DocumentBuilder()
     .setTitle('Simple Storage dApps API')
     .setDescription(`
@@ -20,10 +30,16 @@ async function bootstrap() {
   const document = SwaggerModule.createDocument(app, config);
   SwaggerModule.setup('documentation', app, document);
 
-  await app.listen(process.env.PORT ?? 3000);
+  // ==============================
+  // BACKEND PORT (WAJIB BEDA)
+  // ==============================
+  const port = process.env.PORT ?? 3001;
+  await app.listen(port);
+
+  console.log(`🚀 Backend running on http://localhost:${port}`);
 }
 
 bootstrap().catch((error) => {
-  console.error('error during application bootstrap:', error);
+  console.error('Error during application bootstrap:', error);
   process.exit(1);
 });
