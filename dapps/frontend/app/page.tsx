@@ -207,7 +207,7 @@ export default function Page() {
 
         {/* FOOTER */}
         <p className="text-center text-xs text-white/40 mt-8">
-          © 2026 • Avalanche Fuji • Full Stack dApp
+          © 2026 • Maulana Sandy | 221011400282 Avalanche Fuji • Full Stack dApp 
         </p>
       </div>
 
